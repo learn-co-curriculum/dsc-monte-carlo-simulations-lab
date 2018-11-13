@@ -1,5 +1,5 @@
 
-# Monte Carlo Simulations - Lab: Permutation Testing
+# Monte Carlo Simulations - Lab
 
 ## Introduction
 
@@ -10,7 +10,7 @@ Often when attempting to conduct a permutation test, the total number of possibl
 
 You will be able to:
 * Understand permutation testing
-* Understand and conduct monte carlo simulations
+* Understand and conduct Monte Carlo simulations
 
 ## Exploding Sample Sizes
 
