@@ -19,37 +19,7 @@ As we discussed in the previous lecture, permutation test sizes can quickly expl
 
 ```python
 # Your code here
-from scipy.special import comb
-import matplotlib.pyplot as plt
-%matplotlib inline
-import numpy as np
 ```
-
-
-```python
-y = []
-x = []
-a = 25
-for b in range(10,200):
-    x.append(b)
-    y.append(comb(a+b, a))
-plt.figure(figsize=(8,8))
-plt.plot(x,y)
-plt.title('Combination Sample Space of a 25 Observation Sample Compared to Various Second Sample Sizes')
-plt.xlabel('Size of Second Sample')
-plt.ylabel('Number of Combinations for Permutation Test')
-```
-
-
-
-
-    Text(0,0.5,'Number of Combinations for Permutation Test')
-
-
-
-
-![png](index_files/index_3_1.png)
-
 
 ## Creating the Monte Carlo Simulation
 
@@ -83,35 +53,8 @@ b = [123.98967482, 141.11969004, 117.00293412, 121.6419775 ,
 
 
 ```python
-diff_mu_a_b = np.mean(a) - np.mean(b)
-num = 0
-denom = 0
-union = a + b
-for i in range(5*10**6):
-    #Generate an a
-    ai = np.random.choice(union, size=len(a), replace=False)
-    #Generate its compliment as b
-    bi = union.copy()
-    for item in ai:
-        bi.remove(item)
-    diff_mu_ai_bi = np.mean(ai) - np.mean(bi)
-    if diff_mu_ai_bi >= diff_mu_a_b:
-        num +=1
-    denom += 1
-    #Compute difference in means
-    if i in [10,100,500,1000, 10**4, 10**5, 10**6, 2*10**6, 5*10**6]:
-        print("After {} iterations p-value is: {}".format(i, num/denom))
+#Your code here
 ```
-
-    After 10 iterations p-value is: 1.0
-    After 100 iterations p-value is: 1.0
-    After 500 iterations p-value is: 1.0
-    After 1000 iterations p-value is: 1.0
-    After 10000 iterations p-value is: 0.9997000299970003
-    After 100000 iterations p-value is: 0.999570004299957
-    After 1000000 iterations p-value is: 0.9995320004679995
-    After 2000000 iterations p-value is: 0.9995225002387499
-
 
 ## Summary
 
