@@ -3,7 +3,7 @@
 
 ## Introduction
 
-Often when attempting to conduct a permutation test, the total number of possible combinations is exceedingly large. At times, this number can be so vast that even with modern computers, it is infeasible or exceedingly resource heavy in order to compute all possible variations. As a result, these large sets can be approximated using monte carlo simulations. In this lab, you will combine ideas from the previous lessons and labs in order to conduct a monte carlo simulation of a permutation test that would otherwise be infeasible to compute.
+Often when attempting to conduct a permutation test, the total number of possible combinations is exceedingly large. At times, this number can be so vast that even with modern computers, it is infeasible or exceedingly resource heavy in order to compute all possible variations. As a result, these large sets can be approximated using Monte Carlo simulations. In this lab, you will combine ideas from the previous lessons and labs in order to conduct a Monte Carlo simulation of a permutation test that would otherwise be infeasible to compute.
 
 
 ## Objectives 
@@ -53,7 +53,7 @@ plt.ylabel('Number of Combinations for Permutation Test')
 
 ## Creating the Monte Carlo Simulation
 
-Let's expand upon our blood pressure example from the preceding lab. Even with our previous sample sizes of a sample of 14 and a sample of 12, we had a total of over 9 million combinations. As you can see from the graph above, this quantity continues to rapidly increase. As a result, it is often impracticle or impossible to calculate all possible combinations. Instead, use a Monte Carlo Simulation to sample from the combination space in order to emulate a permutation test. While a precise simulation of a permutation test would record which combinations we have already simulated, doing so greatly reduces the speed of the process. Below is the complete samples of two populations blood pressure.  
+Let's expand upon our blood pressure example from the preceding lab. Even with our previous sample sizes of a sample of 14 and a sample of 12, we had a total of over 9 million combinations. As you can see from the graph above, this quantity continues to rapidly increase. As a result, it is often impractical or impossible to calculate all possible combinations. Instead, use a Monte Carlo Simulation to sample from the combination space in order to emulate a permutation test. While a precise simulation of a permutation test would record which combinations we have already simulated, doing so greatly reduces the speed of the process. Below is the complete samples of two populations blood pressure.  
   
 Write a Monte Carlo simulation to sample from the permutation space. Be sure to not allow replacement so that certain possible combinations are not repeated. Calculate the p-value after `10, 100, 500, 1000, 10**4, 10**5, 10**6, 2*10**6 and 5*10**6` iterations. Graph these to show how the p-value stabilizes and converges after a large number of iterations.
  
