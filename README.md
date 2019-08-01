@@ -31,13 +31,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 ```
 
-## Creating the Monte Carlo Simulation
-
-Let's expand upon our blood pressure example from the preceding lab. Even with our previous sample sizes of a sample of 14 and a sample of 12, we had a total of over 9 million possible outcomes. As you can see from the graph above, this quantity continues to rapidly increase. As a result, it is often impractical or impossible to calculate all possible variations. Instead, use a Monte Carlo Simulation to sample from the sample space in order to emulate a permutation test. While a precise simulation of a permutation test would record which ordered combinations we have already simulate, doing so greatly reduces the speed of the process. Below is the complete samples of two populations blood pressure.  
-  
-Write a Monte Carlo simulation to sample from the permutation space. Be sure to not allow replacement so that no cases are repeated. Calculate the p-value after `10, 100, 500, 1000, 10**4, 10**5, 10**6, 2*10**6 and 5*10**6` iterations. Graph these to show how the p-value stabilizes and converges after a large number of iterations.
- 
-
 
 ```python
 # __SOLUTION__ 
@@ -62,8 +55,15 @@ plt.ylabel('Number of Combinations for Permutation Test')
 
 
 
-![png](index_files/index_5_1.png)
+![png](index_files/index_4_1.png)
 
+
+## Creating the Monte Carlo Simulation
+
+Let's expand upon our blood pressure example from the preceding lab. Even with our previous sample sizes of a sample of 14 and a sample of 12, we had a total of over 9 million possible outcomes. As you can see from the graph above, this quantity continues to rapidly increase. As a result, it is often impractical or impossible to calculate all possible variations. Instead, use a Monte Carlo Simulation to sample from the sample space in order to emulate a permutation test. While a precise simulation of a permutation test would record which ordered combinations we have already simulate, doing so greatly reduces the speed of the process. Below is the complete samples of two populations blood pressure.  
+  
+Write a Monte Carlo simulation to sample from the permutation space. Be sure to not allow replacement so that no cases are repeated. Calculate the p-value after `10, 100, 500, 1000, 10**4, 10**5, 10**6, 2*10**6 and 5*10**6` iterations. Graph these to show how the p-value stabilizes and converges after a large number of iterations.
+ 
 
 
 ```python
@@ -117,10 +117,6 @@ b = [123.98967482, 141.11969004, 117.00293412, 121.6419775 ,
        129.93260914, 121.01049611, 129.23680238]
 ```
 
-## Summary
-
-In this lab you simulated a permutation test and observed both how sample sizes can explode rapidly and how p-values will converge over time in a simulation.
-
 
 ```python
 # __SOLUTION__ 
@@ -153,3 +149,7 @@ for i in range(5*10**6):
     After 1000000 iterations p-value is: 0.9995320004679995
     After 2000000 iterations p-value is: 0.9995225002387499
 
+
+## Summary
+
+In this lab you simulated a permutation test and observed both how sample sizes can explode rapidly and how p-values will converge over time in a simulation.
