@@ -3,7 +3,7 @@
 
 ## Introduction
 
-Often when attempting to conduct a permutation test, the total number of possible combinations is exceedingly large. At times, this number can be so vast that even with modern computers, it is infeasible or exceedingly resource heavy in order to compute all possible variations. As a result, these large sets can be approximated using Monte Carlo simulations. In this lab, you will combine ideas from the previous lessons and labs in order to conduct a Monte Carlo simulation of a permutation test that would otherwise be infeasible to compute.
+In order to calculate the precise probability of an event occurring, one needs to know the number of occurrences and the number of possible outcomes. If there are a large number of variables, these sample spaces can explode very quickly. Often, these spaces are so large that analyzing all possible outcomes is not  possible. As an alternative, these large sets can be approximated using Monte Carlo simulations. In this lab, you will combine ideas from the previous lessons and labs in order to conduct a Monte Carlo simulation of a permutation test that would otherwise be infeasible to compute.
 
 
 ## Objectives 
@@ -14,7 +14,7 @@ You will be able to:
 
 ## Exploding Sample Sizes
 
-As we discussed in the previous lecture, permutation test sizes can quickly explode as our original sample sizes grow. To demonstrate this, Create a graph to show how the number of combinations increases as we increase just one of the sample sizes. Assume that our first sample is of 25 individuals. From there, plot a graph of how the permutation test sample size increases drastically as our second sample increases from 10 to 200 individuals. (Assume that every new person has a unique blood pressure; a stretch of an assumption, but greatly simplifies our calculations for now.)
+As we discussed in the previous lecture, permutation test sizes can quickly explode as our original sample sizes grow. To demonstrate this, Create a graph to show how the number of permutations increases as we increase just one of the sample sizes. Assume that our first sample is of 25 individuals. From there, plot a graph of how the permutation test sample size increases drastically as our second sample increases from 10 to 200 individuals. (Assume that every new person has a unique blood pressure; a stretch of an assumption, but greatly simplifies our calculations for now.)
 
 
 ```python
@@ -53,9 +53,9 @@ plt.ylabel('Number of Combinations for Permutation Test')
 
 ## Creating the Monte Carlo Simulation
 
-Let's expand upon our blood pressure example from the preceding lab. Even with our previous sample sizes of a sample of 14 and a sample of 12, we had a total of over 9 million combinations. As you can see from the graph above, this quantity continues to rapidly increase. As a result, it is often impractical or impossible to calculate all possible combinations. Instead, use a Monte Carlo Simulation to sample from the combination space in order to emulate a permutation test. While a precise simulation of a permutation test would record which combinations we have already simulated, doing so greatly reduces the speed of the process. Below is the complete samples of two populations blood pressure.  
+Let's expand upon our blood pressure example from the preceding lab. Even with our previous sample sizes of a sample of 14 and a sample of 12, we had a total of over 9 million possible outcomes. As you can see from the graph above, this quantity continues to rapidly increase. As a result, it is often impractical or impossible to calculate all possible variations. Instead, use a Monte Carlo Simulation to sample from the sample space in order to emulate a permutation test. While a precise simulation of a permutation test would record which ordered combinations we have already simulate, doing so greatly reduces the speed of the process. Below is the complete samples of two populations blood pressure.  
   
-Write a Monte Carlo simulation to sample from the permutation space. Be sure to not allow replacement so that certain possible combinations are not repeated. Calculate the p-value after `10, 100, 500, 1000, 10**4, 10**5, 10**6, 2*10**6 and 5*10**6` iterations. Graph these to show how the p-value stabilizes and converges after a large number of iterations.
+Write a Monte Carlo simulation to sample from the permutation space. Be sure to not allow replacement so that no cases are repeated. Calculate the p-value after `10, 100, 500, 1000, 10**4, 10**5, 10**6, 2*10**6 and 5*10**6` iterations. Graph these to show how the p-value stabilizes and converges after a large number of iterations.
  
 
 
@@ -115,4 +115,4 @@ for i in range(5*10**6):
 
 ## Summary
 
-In this lab you simulated a permutation test and observed both how combination sizes explode rapidly and how p-values will converge over time in a simulation.
+In this lab you simulated a permutation test and observed both how sample sizes can explode rapidly and how p-values will converge over time in a simulation.
