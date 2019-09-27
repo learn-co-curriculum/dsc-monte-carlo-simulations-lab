@@ -54,6 +54,7 @@ b = [123.98967482, 141.11969004, 117.00293412, 121.6419775 ,
 
 ```python
 #Your code here
+# ⏰ This cell may take several minutes to run
 ```
 
 ## Summary
