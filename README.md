@@ -83,6 +83,7 @@ b = [123.98967482, 141.11969004, 117.00293412, 121.6419775 ,
 
 
 ```python
+# ⏰ This cell may take several minutes to run
 diff_mu_a_b = np.mean(a) - np.mean(b)
 num = 0
 denom = 0
