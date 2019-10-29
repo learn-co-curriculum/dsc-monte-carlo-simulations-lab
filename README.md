@@ -3,18 +3,17 @@
 
 ## Introduction
 
-In order to calculate the precise probability of an event occurring, one needs to know the number of occurrences and the number of possible outcomes. If there are a large number of variables, these sample spaces can explode very quickly. Often, these spaces are so large that analyzing all possible outcomes is not  possible. As an alternative, these large sets can be approximated using Monte Carlo simulations. In this lab, you will combine ideas from the previous lessons and labs in order to conduct a Monte Carlo simulation of a permutation test that would otherwise be infeasible to compute.
+In order to calculate the precise probability of an event occurring, one needs to know the number of occurrences and the number of possible outcomes. If there are a large number of variables, these sample spaces can explode very quickly. Often, these spaces are so large that analyzing all possible outcomes is not  possible. As an alternative, these large sets can be approximated using Monte Carlo simulations. In this lab, you will conduct a Monte Carlo simulation of a permutation test that would otherwise be infeasible to compute.
 
 
 ## Objectives 
 
-You will be able to:
-* Understand permutation testing
-* Understand and conduct Monte Carlo simulations
+In this lab you will:
+- Conduct a Monte Carlo simulation
 
-## Exploding Sample Sizes
+## Exploding sample sizes
 
-As we discussed in the previous lecture, permutation test sizes can quickly explode as our original sample sizes grow. To demonstrate this, create a graph to show how the number of permutations increases as we increase just one of the sample sizes. Assume that our first sample is of 25 individuals. From there, plot a graph of how the permutation test sample size increases drastically as our second sample increases from 10 to 200 individuals. (Assume that every new person has a unique blood pressure; a stretch of an assumption, but greatly simplifies our calculations for now.)
+As we discussed in the previous lesson, permutation test sizes can quickly explode as our original sample sizes grow. To demonstrate this, create a graph to show how the number of permutations increases as we increase just one of the sample sizes. Assume that our first sample is of 25 individuals. From there, plot a graph of how the permutation test sample size increases drastically as our second sample increases from 10 to 200 individuals. (Assume that every new person has a unique blood pressure; a stretch of an assumption, but greatly simplifies our calculations for now.)
 
 
 ```python
@@ -37,33 +36,25 @@ import numpy as np
 y = []
 x = []
 a = 25
-for b in range(10,200):
+for b in range(10, 200):
     x.append(b)
-    y.append(comb(a+b, a))
-plt.figure(figsize=(8,8))
-plt.plot(x,y)
-plt.title('Combination Sample Space of a 25 Observation Sample Compared to Various Second Sample Sizes')
-plt.xlabel('Size of Second Sample')
-plt.ylabel('Number of Combinations for Permutation Test')
+    y.append(comb(a + b, a))
+plt.figure(figsize=(8, 8))
+plt.plot(x, y)
+plt.title('Combination sample space of a 25 observation sample compared to various second sample sizes')
+plt.xlabel('Size of second sample')
+plt.ylabel('Number of combinations for permutation test');
 ```
 
 
+![png](index_files/index_4_0.png)
 
 
-    Text(0,0.5,'Number of Combinations for Permutation Test')
+## Creating the Monte Carlo simulation
 
-
-
-
-![png](index_files/index_4_1.png)
-
-
-## Creating the Monte Carlo Simulation
-
-Let's expand upon our blood pressure example from the preceding lab. Even with our previous sample sizes of a sample of 14 and a sample of 12, we had a total of over 9 million possible outcomes. As you can see from the graph above, this quantity continues to rapidly increase. As a result, it is often impractical or impossible to calculate all possible variations. Instead, use a Monte Carlo Simulation to sample from the sample space in order to emulate a permutation test. While a precise simulation of a permutation test would record which ordered combinations we have already simulate, doing so greatly reduces the speed of the process. Below are the complete samples of two populations' blood pressure.  
+Let's expand upon our blood pressure example from the Resampling methods lab. Even with our previous sample sizes of a sample of 14 and a sample of 12, we had a total of over 9 million possible outcomes. As you can see from the graph above, this quantity continues to rapidly increase. As a result, it is often impractical or impossible to calculate all possible variations. Instead, use a Monte Carlo simulation to sample from the sample space in order to emulate a permutation test. While a precise simulation of a permutation test would record which ordered combinations we have already simulate, doing so greatly reduces the speed of the process. Below are the complete samples of two populations' blood pressure.  
   
 Write a Monte Carlo simulation to sample from the permutation space. Be sure to not allow replacement so that no cases are repeated. Calculate the p-value after `10, 100, 500, 1000, 10**4, 10**5, 10**6, 2*10**6 and 5*10**6` iterations. Graph these to show how the p-value stabilizes and converges after a large number of iterations.
- 
 
 
 ```python
@@ -127,9 +118,9 @@ num = 0
 denom = 0
 union = a + b
 for i in range(5*10**6):
-    #Generate an a
+    # Generate ai
     ai = np.random.choice(union, size=len(a), replace=False)
-    #Generate its compliment as b
+    # Generate its compliment as bi
     bi = union.copy()
     for item in ai:
         bi.remove(item)
@@ -137,7 +128,7 @@ for i in range(5*10**6):
     if diff_mu_ai_bi >= diff_mu_a_b:
         num +=1
     denom += 1
-    #Compute difference in means
+    # Compute difference in means
     if i in [10,100,500,1000, 10**4, 10**5, 10**6, 2*10**6, 5*10**6]:
         print("After {} iterations p-value is: {}".format(i, num/denom))
 ```
@@ -146,10 +137,10 @@ for i in range(5*10**6):
     After 100 iterations p-value is: 1.0
     After 500 iterations p-value is: 1.0
     After 1000 iterations p-value is: 1.0
-    After 10000 iterations p-value is: 0.9997000299970003
-    After 100000 iterations p-value is: 0.999570004299957
-    After 1000000 iterations p-value is: 0.9995320004679995
-    After 2000000 iterations p-value is: 0.9995225002387499
+    After 10000 iterations p-value is: 0.9995000499950005
+    After 100000 iterations p-value is: 0.999520004799952
+    After 1000000 iterations p-value is: 0.9995330004669996
+    After 2000000 iterations p-value is: 0.9995270002364999
 
 
 ## Summary
